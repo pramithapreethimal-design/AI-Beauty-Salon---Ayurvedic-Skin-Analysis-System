@@ -1,0 +1,15 @@
+/* assets/css/custom.css */
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Optional: Add subtle shadow or animation later */
+.btn-primary {
+    background-color: #ff69b4; /* Hot pink — fits beauty theme */
+    border-color: #ff69b4;
+}
+
+.btn-primary:hover {
+    background-color: #e55ca7;
+    border-color: #e55ca7;
+}

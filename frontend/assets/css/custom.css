@@ -1,0 +1,178 @@
+/* IMPORT FONTS: Playfair Display (Titles) & Poppins (Body) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
+
+/* --- COLOR VARIABLES (Ayurvedic Theme) --- */
+:root {
+    --primary-color: #557c55; /* Sage Green */
+    --secondary-color: #a6c48a; /* Light Green */
+    --accent-color: #d4a373; /* Earthy Gold */
+    --bg-light: #fbfbfb;
+    --text-dark: #333;
+}
+
+/* Dark Mode Overrides */
+[data-bs-theme="dark"] {
+    --primary-color: #8ab08a;
+    --accent-color: #eecca3;
+    --bg-light: #121212;
+    --text-dark: #fbfbfb;
+}
+
+/* --- GLOBAL STYLES --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4, h5, .navbar-brand {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+/* --- NAVIGATION --- */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color) !important;
+}
+
+/* --- BUTTONS --- */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3e5c3e;
+    border-color: #3e5c3e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(85, 124, 85, 0.4);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-radius: 50px;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    background: linear-gradient(135deg, rgba(85, 124, 85, 0.1) 0%, rgba(212, 163, 115, 0.1) 100%);
+    padding: 80px 0;
+    border-radius: 0 0 50px 50px; /* Curve at the bottom */
+    margin-bottom: 2rem;
+}
+
+[data-bs-theme="dark"] .hero-section {
+    background: linear-gradient(135deg, rgba(85, 124, 85, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.hero-image {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Badge Style */
+.badge-custom {
+    background-color: rgba(85, 124, 85, 0.15);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+/* --- CARDS --- */
+.feature-card {
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    background: var(--bs-body-bg); /* Uses Bootstrap's bg var */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.icon-box {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* --- THEME TOGGLE BUTTON --- */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+
+/* --- LOGIN & REGISTER PAGE STYLES --- */
+
+/* Ensures the row takes full height of the viewport */
+.h-100vh {
+    min-height: 100vh;
+}
+
+/* The Background Image */
+.login-image-container {
+    background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full height */
+    width: 100%;
+}
+
+/* Form container width */
+.login-form-wrapper {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Floating Input Tweaks */
+.form-floating > .form-control {
+    padding-left: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-floating > .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(85, 124, 85, 0.25);
+}
