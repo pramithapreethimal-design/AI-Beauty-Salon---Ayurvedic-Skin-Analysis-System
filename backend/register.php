@@ -14,8 +14,7 @@ if (isset($_POST['register'])) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        // ✅ FIXED PATH
-        echo "<script>alert('Email already registered!'); window.location.href='../frontend/login.html';</script>";
+        echo "<script>alert('Email already registered!'); window.location.href='/login.html';</script>";
         $stmt->close();
     } else {
         $hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
@@ -25,8 +24,7 @@ if (isset($_POST['register'])) {
         $stmt->bind_param("sss", $name, $email, $hashed_pass);
 
         if ($stmt->execute()) {
-            // ✅ FIXED PATH
-            echo "<script>alert('Registration Successful!'); window.location.href='../frontend/login.html';</script>";
+            echo "<script>alert('Registration Successful!'); window.location.href='/login.html';</script>";
         } else {
             echo "Error: " . $stmt->error;
         }

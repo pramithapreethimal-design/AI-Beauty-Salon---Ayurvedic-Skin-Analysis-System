@@ -1,0 +1,16 @@
+{
+  "name": "AI Beauty Salon Dev",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "ai-api",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+  "forwardPorts": [5000, 8080],
+  "postCreateCommand": "echo 'Ready! Run: docker-compose up --build'"
+}

@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['name'] ?? 'User'; 
 
-include '../backend/db.php';
+include('backend/db.php');
 
 $sql = "SELECT * FROM skin_analysis WHERE user_id = ? ORDER BY created_at DESC";
 $stmt = $conn->prepare($sql);

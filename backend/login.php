@@ -23,16 +23,16 @@ if (isset($_POST['login'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['name'] = $user['full_name']; 
 
-            // ✅ FIXED PATH: Redirect to 'frontend' folder
-            header("Location: ../frontend/dashboard.php");
+           
+           header("Location: /dashboard.php");
             exit();
         } else {
-            // ✅ FIXED PATH
-            echo "<script>alert('Wrong password!'); window.location.href='../frontend/login.html';</script>";
+        
+            echo "<script>alert('Wrong password!'); window.location.href='/login.html';</script>";
         }
     } else {
-        // ✅ FIXED PATH
-        echo "<script>alert('User not found. Please register!'); window.location.href='../frontend/register.html';</script>";
+      
+        echo "<script>alert('User not found. Please register!'); window.location.href='/register.html';</script>";
     }
 
     $stmt->close();

@@ -2,7 +2,7 @@
 session_start();
 include 'db.php';
 
-// Check if a file was actually uploaded
+
 if (isset($_POST['upload']) && isset($_FILES['skin_image'])) {
     
     // 1. Determine if user is logged in or a guest
@@ -43,11 +43,10 @@ if (isset($_POST['upload']) && isset($_FILES['skin_image'])) {
         die("Failed to save image.");
     }
 
-    // 2. Call Flask AI API
     $curl = curl_init();
     $cfile = new CURLFile($targetFilePath, mime_content_type($targetFilePath), $fileName);
     curl_setopt_array($curl, [
-        CURLOPT_URL => "http://127.0.0.1:5000/api/predict",
+        CURLOPT_URL => "http://ai-api:5000/api/predict",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => ['image' => $cfile],
@@ -90,11 +89,9 @@ if (isset($_POST['upload']) && isset($_FILES['skin_image'])) {
         }
         // We keep the file in ../uploads/ so they can see it in Dashboard
     } else {
-        // --- GUEST: PRIVACY FIRST ---
-        // We do NOT save to database.
-        // We DELETE the image immediately after analysis.
+       
         unlink($targetFilePath);
-        $fileName = ""; // Clear filename so result page doesn't try to show it
+        $fileName = ""; 
     }
 
     // 4. Redirect to Result Page
@@ -111,7 +108,7 @@ if (isset($_POST['upload']) && isset($_FILES['skin_image'])) {
         'products' => $encodedProducts
     ]);
 
-    header("Location: ../frontend/result.php?$params");
+   header("Location: /result.php?$params");
     exit;
 } else {
     // If someone tries to access this file directly without uploading

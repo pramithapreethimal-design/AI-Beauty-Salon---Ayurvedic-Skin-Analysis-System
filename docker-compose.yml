@@ -1,0 +1,42 @@
+# docker-compose.yml
+services:
+  web:
+    build:
+      context: .
+      dockerfile: php-apache/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/var/www/html          # Serves index.html, upload.html, login.html, etc.
+      - ./backend:/var/www/html/backend   # PHP scripts available at /backend/
+      - ./uploads:/var/www/html/uploads
+      - ./static:/var/www/html/static
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  ai-api:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./model:/app/model
+      - ./static:/app/static
+    restart: unless-stopped
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: beauty_ai_app
+    volumes:
+      - mysql_:/var/lib/mysql
+      - ./database/beauty_ai_app.sql:/docker-entrypoint-initdb.d/init.sql  # ← ADD THIS
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  mysql_: {}

@@ -21,7 +21,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 try:
     model = load_model("model/skin_type_model.h5")
 except Exception as e:
-    print("⚠️ Model loading failed:", e)
+    print(" Model loading failed:", e)
     model = None
 
 SERPER_API_KEY = os.getenv("SERPER_API_KEY")
@@ -77,7 +77,7 @@ def search_ayurvedic_products(skin_type, base_keyword):
             })
         return products or get_fallback_ayurvedic_products(skin_type)
     except Exception as e:
-        print("🔍 Search error:", str(e))
+        print(" Search error:", str(e))
         return get_fallback_ayurvedic_products(skin_type)
 
 def get_fallback_ayurvedic_products(skin_type):
@@ -148,4 +148,4 @@ def api_predict():
     })
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False) 
